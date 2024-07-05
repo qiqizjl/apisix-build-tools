@@ -1,5 +1,5 @@
 ARG IMAGE_BASE="debian"
-ARG IMAGE_TAG="bullseye-slim"
+ARG IMAGE_TAG="bookworm-slim"
 
 FROM ${IMAGE_BASE}:${IMAGE_TAG} as build
 
@@ -28,5 +28,5 @@ RUN mv ./utils/build-common.sh ./utils/determine-dist.sh ./ \
 FROM ${IMAGE_BASE}:${IMAGE_TAG} as prod
 
 COPY --from=build /usr/local /usr/local
-COPY --from=build /tmp/dist /tmp/dist
-COPY --from=build /tmp/codename /tmp/codename
+ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
+RUN curl https://raw.githubusercontent.com/apache/apisix/master/utils/linux-install-luarocks.sh -sL | sh -

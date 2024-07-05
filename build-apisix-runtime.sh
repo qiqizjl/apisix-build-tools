@@ -6,7 +6,7 @@ runtime_version=${runtime_version:-0.0.0}
 
 
 debug_args=${debug_args:-}
-ENABLE_FIPS=${ENABLE_FIPS:-"false"}
+ENABLE_FIPS=${ENABLE_FIPS:-"true"}
 OPENSSL_CONF_PATH=${OPENSSL_CONF_PATH:-$PWD/conf/openssl3/openssl.cnf}
 
 
@@ -20,7 +20,7 @@ ld_opt=${ld_opt:-"-L$zlib_prefix/lib -L$pcre_prefix/lib -L$OPENSSL_PREFIX/lib -W
 
 
 # dependencies for building openresty
-OPENSSL_VERSION=${OPENSSL_VERSION:-"3.2.0"}
+OPENSSL_VERSION=${OPENSSL_VERSION:-"3.3.1"}
 OPENRESTY_VERSION="1.25.3.1"
 ngx_multi_upstream_module_ver="1.2.0"
 mod_dubbo_ver="1.0.2"
